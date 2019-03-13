@@ -1,15 +1,19 @@
 package fr.akharroub.universite.enseignant.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import fr.akharroub.universite.matiere.domain.Matiere;
 
 @Entity
 @Table(name="t_enseignant")
@@ -46,9 +50,20 @@ public class Enseignant {
 	
 	@Column(name="photo")
 	private String photo;
+	
+	@OneToMany(mappedBy="enseignant")
+	private List<Matiere> matieres;
 
 	public String getPhoto() {
 		return photo;
+	}
+
+	public List<Matiere> getMatieres() {
+		return matieres;
+	}
+
+	public void setMatieres(List<Matiere> matieres) {
+		this.matieres = matieres;
 	}
 
 	public void setPhoto(String photo) {
