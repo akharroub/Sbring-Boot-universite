@@ -14,12 +14,14 @@
 				<th>Matière</th>
 				<th>Note</th>
 				<th>Coef</th>
+				<th>Modifier</th>
 			</tr>
 			<tr th:each="note : ${note}">
 				<td th:text="${note.etudiant.prenom + ' ' + note.etudiant.nom}"></td>
 				<td th:text="${note.matiere.nom}"></td>
 				<td th:text="${note.note}"></td>
 				<td th:text="${note.matiere.coef}"></td>
+				<td><a th:href="@{modifier-note(idMatiere=${note.matiere.id}, idEtudiant=${note.etudiant.id})}">modifier</a></td>
 			</tr>
 		</table>
 	</div>

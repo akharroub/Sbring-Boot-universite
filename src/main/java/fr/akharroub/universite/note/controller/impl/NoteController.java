@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.akharroub.universite.etudiant.domain.Etudiant;
 import fr.akharroub.universite.etudiant.service.impl.ServiceEtudiant;
@@ -75,6 +76,14 @@ ServiceMatiere controllerMatiere;
 		controller.save(note);
 		
 		return "redirect:/notes";
+	}
+
+	@Override
+	@GetMapping("/modifier-note")
+	public String modifiernote(Model model,@RequestParam("idMatiere") Integer idMatiere,@RequestParam("idEtudiant") Integer idEtudiant) {
+		Note n = controller.findOne(idMatiere, idEtudiant);
+		model.addAttribute("note", n);
+		return "note/modifier-note";
 	}
 
 }

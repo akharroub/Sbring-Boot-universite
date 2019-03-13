@@ -11,4 +11,8 @@ public interface INoteController {
 	public String AddNote(Model model);
 	
 	public String AddNoteV(Model model,Note note);
+	
+	public String modifiernote(Model model , Integer idMatiere , Integer idEtudiant);
+	
+	
 }
